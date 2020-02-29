@@ -134,10 +134,8 @@ class UserTest(TestCase):
             response = self.client.post('/new/', {'text': 'I am a test post with image', 'image': doc}, follow=True)
             self.assertNotContains(response, '<img', status_code=200, msg_prefix='', html=False)
       
-            
 
-
-class followCaseTests(TestCase):
+class FollowCaseTests(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = User.objects.create_user(
@@ -151,6 +149,7 @@ class followCaseTests(TestCase):
                 )
         
         self.post = Post.objects.create(text="Test post", author=self.user3)
+
 
     def test_follow_unfollow(self):
         """Авторизованный пользователь может подписываться на других пользователей и удалять их из подписок."""

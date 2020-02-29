@@ -98,7 +98,6 @@ def server_error(request):
 @login_required
 def add_comment(request, username, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    #comments = Comment.objects.filter(post=post).order_by('-created').all()
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
